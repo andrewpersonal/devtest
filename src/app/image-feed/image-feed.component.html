@@ -1,0 +1,15 @@
+
+<div *ngFor="let image of getData; let i = index">
+		<div class="item small-12 medium-5 large-3  left" [ngStyle]="{'background-image':'url(https://devtest.tailify.com/' + image.path +')'}" >
+			<div class="upload" (click)="sendJson(image)" [ngClass]="{uploaded: true}"><p> upload </p></div>
+		</div>
+	</div>
+<div [hidden]="!uploaded" id="response">
+	<p>
+	  image-feed works!
+	   <br>
+	  {{postData}}
+	</p>
+</div>
+
+

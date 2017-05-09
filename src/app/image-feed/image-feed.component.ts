@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { GrabImagesService } from '../grab-images.service';
-import { PostImageService } from '../post-image.service';
 
 
 @Component({
@@ -12,10 +11,11 @@ export class ImageFeedComponent implements OnInit {
 	
 	getData: any;
 	postData: any;
-	uploading: boolean;
+	uploaded: boolean;
 
-  constructor(private imageService:GrabImagesService, private postService:PostImageService) { }
+  constructor(private imageService:GrabImagesService) { }
 
+  //Fetch data on init 
   ngOnInit() {
   	this.imageService.fetchData()
   	.subscribe(
@@ -25,29 +25,12 @@ export class ImageFeedComponent implements OnInit {
   	);
   }
 
-  testClick() {
-  	this.imageService.fetchData()
-  	.subscribe(
-  		data => this.getData = JSON.stringify(data),
-  		error => alert(error), 
-  		 () => console.log("finished")
-  	);
-  }
-
-  testPostClick() {
-  	this.postService.postData('lala')
-  	.subscribe(
-  		data => this.postData = JSON.stringify(data),
-  		error => console.error('An error occured', error), 
-  		 () => console.log("finished")
-  	);
-  }
-
+  //function to upload image data
   sendJson(image) {
   	this.imageService.postData = image.path
   	this.imageService.postJSON()
   	.subscribe(
-  		data => this.postData = JSON.stringify(data),
+  		data => this.postData = data,
   		error => console.error('An error occured', error), 
   		 () => console.log(this.imageService.postData)
   	);

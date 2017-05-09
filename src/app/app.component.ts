@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { GrabImagesService } from './grab-images.service';
-import { PostImageService } from './post-image.service';
+
 
 @Component({
   selector: 'app-root',
@@ -19,7 +19,7 @@ export class AppComponent {
 
 	}
 
-	
+
 
 
 

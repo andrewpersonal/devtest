@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ImageFeedComponent } from './image-feed/image-feed.component';
 import { GrabImagesService } from './grab-images.service';
-import { PostImageService } from './post-image.service';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { PostImageService } from './post-image.service';
     FormsModule,
     HttpModule
   ],
-  providers: [GrabImagesService, PostImageService],
+  providers: [GrabImagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

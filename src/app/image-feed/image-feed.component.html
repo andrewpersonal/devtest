@@ -4,11 +4,11 @@
 			<div class="upload" (click)="sendJson(image)" [ngClass]="{uploaded: true}"><p> upload </p></div>
 		</div>
 	</div>
-<div [hidden]="!uploaded" id="response">
+
+<!-- error will be thrown because data won't be ready/ todo - add check -->
+<div id="response" class="small-8 left" [hidden]="!postData">
 	<p>
-	  image-feed works!
-	   <br>
-	  {{postData}}
+	  <strong>{{postData.filename}}</strong> has been uploaded to: {{postData.uri}}
 	</p>
 </div>
 

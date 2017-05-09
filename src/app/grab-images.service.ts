@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 
 export class GrabImagesService {
 	
+	//declare vars for later use
 	Images: any;
 	postData: any; 
 
@@ -14,11 +15,14 @@ export class GrabImagesService {
 
   }
 
+  // Detching data from api/ todo - replace urls with var so only have to change in one place in future
 
   fetchData() {
-  	return this.http.get(' https://devtest.tailify.com/api/list')
+  	return this.http.get('https://devtest.tailify.com/api/list')
   		.map(res =>res.json());
   }
+
+  //Posting data/ note - does not take any name that isn't listed from the fetch. Filename to be uploaded only
 
   postJSON() {
   	var json = this.postData;

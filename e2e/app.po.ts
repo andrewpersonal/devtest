@@ -5,7 +5,6 @@ export class DevtestPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
-  }
+	items = element.all(by.css('.item'))
+	uploadButton = element.all(by.css('.upload'))
 }

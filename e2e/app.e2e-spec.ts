@@ -7,8 +7,11 @@ describe('devtest App', () => {
     page = new DevtestPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should be 6 items', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.items.count()).toEqual(6);
   });
+
+
+
 });

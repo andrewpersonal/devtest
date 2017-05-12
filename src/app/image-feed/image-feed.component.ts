@@ -11,11 +11,13 @@ export class ImageFeedComponent implements OnInit {
 	
 	getData: any;
 	postData: any;
+  errorData: any;
 	uploaded: boolean;
+  selectedStatus: Array<boolean> = [];
 
   constructor(private imageService:GrabImagesService) { }
 
-  //Fetch data on init 
+  //Fetch data on init & introduce
   ngOnInit() {
   	this.imageService.fetchData()
   	.subscribe(
@@ -25,14 +27,15 @@ export class ImageFeedComponent implements OnInit {
   	);
   }
 
+ 
   //function to upload image data
-  sendJson(image) {
+  sendJson(image, index) {
   	this.imageService.postData = image.path
   	this.imageService.postJSON()
   	.subscribe(
   		data => this.postData = data,
-  		error => console.error('An error occured', error), 
-  		 () => console.log(this.imageService.postData)
+  		error => this.errorData = JSON.parse(error._body), 
+  		 () => this.selectedStatus[index] = true
   	);
   }
 

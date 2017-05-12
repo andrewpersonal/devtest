@@ -1,14 +1,17 @@
 
 <div *ngFor="let image of getData; let i = index">
-		<div class="item small-12 medium-5 large-3  left" [ngStyle]="{'background-image':'url(https://devtest.tailify.com/' + image.path +')'}" >
-			<div class="upload" (click)="sendJson(image)" [ngClass]="{uploaded: true}"><p> upload </p></div>
+		<div class="item small-12 medium-5 large-3 left animated bounceIn" [ngStyle]="{'background-image':'url(https://devtest.tailify.com/' + image.path +')'}" [ngClass]="{'uploaded': selectedStatus[i]}" >
+			<div class="upload animated" (click)="errorData = false; postData = false; sendJson(image, i)" [ngClass]="{'bounceOutDown': selectedStatus[i]}"><p> upload </p></div>
 		</div>
 	</div>
 
-<!-- error will be thrown because data won't be ready/ todo - add check -->
-<div id="response" class="small-8 left" [hidden]="!postData">
-	<p>
-	  <strong>{{postData.filename}}</strong> has been uploaded to: {{postData.uri}}
+
+<div id="response" class="small-8 left animated" [ngClass]="{'error': errorData, 'success': postData}" [hidden]="!postData && !errorData">
+	<p [hidden]="!postData">
+	  <strong>{{postData?.filename}}</strong> has been uploaded to: {{postData?.uri}}
+	</p>
+	<p [hidden]="!errorData">
+	  :( There was a problem: {{errorData?.message}}
 	</p>
 </div>
 
